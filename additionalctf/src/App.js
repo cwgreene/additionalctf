@@ -8,7 +8,9 @@ import { ThemeProvider,
   Project,
   Words,
   SoundsProvider,
-  createSounds
+  createSounds,
+  Frame,
+  Heading
 } from 'arwes';
 
 const styles = theme => ({
@@ -48,10 +50,11 @@ const App = () => (
   <ThemeProvider theme={createTheme()}>
     <SoundsProvider sounds={createSounds(mySounds)}>
       <Arwes animate show>
-        <Header animate show>
-          <Words animate show>My App</Words>
-        </Header>
-        <Project animate header='Status Update'><p>A SciFi Project</p></Project>       
+        <div style={{padding:20}}>
+        <Heading animate><Words animate show>Additional CTF</Words></Heading>
+        <Project animate show header='Status Update'>{anim => (<Words animate show={anim.entered}>A SciFi Project</Words>)}</Project>
+        <Frame animate><Words>This is a frame</Words><Words>hello</Words></Frame>
+        </div>
       </Arwes>
     </SoundsProvider>
   </ThemeProvider>
